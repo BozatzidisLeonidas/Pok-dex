@@ -1,0 +1,45 @@
+.title{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: absolute;
+    top: 30px;
+    width: 100%;
+    height: 65px;
+    background: linear-gradient(115deg, #cee0df 58%, #333333 58%);
+}
+
+.titleLeft{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.titleLeft > p{
+    font-size: 28px;
+    font-weight: 700;
+    margin-left: 30px;
+}
+
+.caught-seen{
+    display: flex;
+    align-items: center;
+}
+
+.seen > p{
+    display: flex;
+    flex-direction: row;
+    margin-left: 2px;
+} 
+
+.caught , .seen{
+    display: flex;
+    align-items: center;
+    background: #595959;
+    border-radius: 15px;
+    padding: 0px 20px 0px 20px;
+    margin-left: 20px;
+    color: white;
+}
+
