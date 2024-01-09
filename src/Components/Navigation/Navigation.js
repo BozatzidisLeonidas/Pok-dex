@@ -1,7 +1,7 @@
 import React from 'react';
 import './Navigation.css';
-import Seen from './seen.png';
-import Caught from './caught.png';
+import Seen from '../../Images/seen.png';
+import Caught from '../../Images/caught.png';
 
 const Navigation = () => {
     return(
