@@ -6,12 +6,13 @@ import Api from './Components/Api/Api';
 import Card from './Components/Card/Card';
 import './App.css';
 
+
+
 class App extends Component {
   render(){
     return (
       <div className="App">
         <Navigation />
-        <Card />
         <Api />
         {/* <Register />
         <SignIn /> */}

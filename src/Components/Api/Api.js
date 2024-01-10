@@ -1,32 +1,39 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Card from '../Card/Card';
+
 const Api = () => {
+    const [pokemon, setPokemon] = useState([]);
+
+    useEffect(() => {
+        const fetchData = async () => {
+            const promises = [];
+
+            for (let i = 1; i <= 10; i++) {
+                const url = `https://pokeapi.co/api/v2/pokemon/${i}`;
+                promises.push(fetch(url).then((res) => res.json()));
+            }
+
+            const results = await Promise.all(promises);
+
+            const formattedPokemon = results.map((data) => ({
+                name: data.name,
+                id: data.id,
+                image: data.sprites['front_default'],
+                type: data.types.map((type) => type.type.name),
+            }));
+            console.log(pokemon)
+            setPokemon(formattedPokemon);
+        };
+
+        fetchData();
+    }, []); // Empty dependency array ensures useEffect runs only once, similar to componentDidMount
     
-    const promises=[];
-
-    for(let i=1; i<=1025; i++){
-        const url = `https://pokeapi.co/api/v2/pokemon/${i}`;
-        promises.push(fetch(url)
-        .then((res) =>{
-             return res.json();
-        }))
-    }   
-    // eslint-disable-next-line no-restricted-globals
-    // const results=await Promise.all(promises)
-    Promise.all(promises).then(results => {
-        const pokemon=results.map((data)=>({
-            name:data.name,
-            id:data.id,
-            image:data.sprites['front_default'],
-            // type01:data.types[0].type.name,
-            // type02:data.types[1]?.type.name
-            type:data.types.map((type) => type.type.name)
-        }))
-        console.log(pokemon)
-    })
-
-    return(
-        
+    return (
+        <div>
+            {pokemon.map((p, index) => (
+                <Card key={index} pokemonList={p} />
+            ))}
+        </div>
     );
 }
 
