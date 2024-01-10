@@ -1,4 +1,4 @@
-.title{
+#Navigation_title{
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -9,31 +9,32 @@
     background: linear-gradient(115deg, #cee0df 58%, #333333 58%);
 }
 
-.titleLeft{
+#Navigation_titleLeft{
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
 }
 
-.titleLeft > p{
+#Navigation_titleLeft > p{
     font-size: 28px;
     font-weight: 700;
     margin-left: 30px;
+    color: black;
 }
 
-.caught-seen{
+#Navigation_caught-seen{
     display: flex;
     align-items: center;
 }
 
-.seen > p{
+#Navigation_seen > p{
     display: flex;
     flex-direction: row;
     margin-left: 2px;
 } 
 
-.caught , .seen{
+#Navigation_caught , #Navigation_seen{
     display: flex;
     align-items: center;
     background: #595959;

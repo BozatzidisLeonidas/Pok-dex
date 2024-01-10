@@ -1,5 +1,5 @@
 import React from 'react';
-
+import Card from '../Card/Card';
 const Api = () => {
     
     const promises=[];
@@ -20,13 +20,13 @@ const Api = () => {
             image:data.sprites['front_default'],
             // type01:data.types[0].type.name,
             // type02:data.types[1]?.type.name
-            type:data.types.map((type) => type.type.name).join(',')
+            type:data.types.map((type) => type.type.name)
         }))
         console.log(pokemon)
     })
 
     return(
-        console.log('kalhspera')
+        
     );
 }
 
