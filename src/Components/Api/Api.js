@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Card from '../Card/Card';
+import './Api.css';
 
 const Api = () => {
     const [pokemon, setPokemon] = useState([]);
@@ -8,7 +9,7 @@ const Api = () => {
         const fetchData = async () => {
             const promises = [];
 
-            for (let i = 1; i <= 10; i++) {
+            for (let i = 1; i <= 120; i++) {
                 const url = `https://pokeapi.co/api/v2/pokemon/${i}`;
                 promises.push(fetch(url).then((res) => res.json()));
             }
@@ -29,11 +30,16 @@ const Api = () => {
     }, []); // Empty dependency array ensures useEffect runs only once, similar to componentDidMount
     
     return (
-        <div>
+    <div className="window">
+        <div className="pokemon-list-container">
             {pokemon.map((p, index) => (
-                <Card key={index} pokemonList={p} />
+                <div key={index} className="pokemon-list-item">
+                     <Card pokemonList={p} />
+                </div>
             ))}
         </div>
+
+    </div>
     );
 }
 

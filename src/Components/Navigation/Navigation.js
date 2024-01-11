@@ -19,6 +19,7 @@ const Navigation = () => {
                 </div>
             </div>
         </div>
+        <p id='byNumber'>By Number</p>
     </div>
  );
 }

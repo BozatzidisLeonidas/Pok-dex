@@ -44,3 +44,8 @@
     color: white;
 }
 
+#byNumber{
+    display: flex;
+    font-size: 25px;
+    color: white; 
+    margin-right: 35%;}

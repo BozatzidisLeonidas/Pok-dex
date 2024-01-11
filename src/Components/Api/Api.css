@@ -1,0 +1,20 @@
+.pokemon-list-container {  
+    margin-top: 100px;
+    width: 42%;
+    height: 1190px; /* Set a fixed height for the container */
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+  .pokemon-list-item {
+    margin-right: 10px;;
+  }
+
+  .window{
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  
