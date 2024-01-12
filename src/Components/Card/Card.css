@@ -3,19 +3,41 @@
     justify-content: space-between;
     align-items: center;
     cursor: pointer;
-    background-color: rgb(193, 255, 236);
     border-radius: 50px;
+    position: relative;
+}
 
+#imageName{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content:flex-start;
 }
 
 #info{
     display: flex;
     align-items: center;
-    margin-left: 10px;
-    
+    margin-left: 10px; 
 }
 
 #caught{
     margin-right: 15px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
 }
 
+
+#all:hover #caught {
+    background-image: url('../../Images/White.png');
+    opacity: 1;
+  }
+  
+#name{
+    margin-left: 10%;
+}
+
+
+#all:hover{   
+    background: linear-gradient(115deg, #fd5d17 35%, #191919 35%);
+    -webkit-text-fill-color: aliceblue;
+}

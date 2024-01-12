@@ -9,7 +9,7 @@ const Api = () => {
         const fetchData = async () => {
             const promises = [];
 
-            for (let i = 1; i <= 120; i++) {
+            for (let i = 1; i <= 1; i++) {
                 const url = `https://pokeapi.co/api/v2/pokemon/${i}`;
                 promises.push(fetch(url).then((res) => res.json()));
             }
@@ -21,6 +21,14 @@ const Api = () => {
                 id: data.id,
                 image: data.sprites['front_default'],
                 type: data.types.map((type) => type.type.name),
+                stats: data.stats.map(function(stat){
+                    return{
+                        name: stat.stat.name, //stats[0-6].stat.name
+                        base_stat: stat.base_stat,
+                    }
+                  }),
+                
+
             }));
             console.log(pokemon)
             setPokemon(formattedPokemon);

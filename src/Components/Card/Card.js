@@ -1,6 +1,9 @@
 import React from 'react';
 import "./Card.css";
-import Caught from '../../Images/caught.png';
+import Black from '../../Images/Black.png';
+import White from '../../Images/White.png';
+
+
 
 const Card = (props) => {
     console.log(props)
@@ -10,18 +13,19 @@ const Card = (props) => {
     return (
         <div id='container'>
             <div id='all'>
-                <img src={image} alt={name} />
-                <div id='id'>
-                    <p>No: {formattedId}</p>
-                </div>
+                <div id='imageName'>
+                    <img src={image} alt={name} />
+                    <div id='id'>
+                        <p>No. {formattedId}</p>
+                    </div>
+                </div>   
                 <div id='name'>
                     <p>{name.charAt(0).toUpperCase() + name.slice(1)}</p>
-                </div>
+                </div> 
                 <div id='caught'>
-                    <img src={Caught} alt='pokeball' />
+                    <img src={White} alt='pokeball' />
                 </div>
                 {/* <p>Type: {type.map(t => t.charAt(0).toUpperCase() + t.slice(1)).join(', ')}</p> */}
-                
             </div>
         </div>
     );

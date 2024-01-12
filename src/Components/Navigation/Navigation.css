@@ -6,6 +6,7 @@
     top: 30px;
     width: 100%;
     height: 65px;
+    background-size: 100% 200%;
     background: linear-gradient(115deg, #cee0df 58%, #333333 58%);
 }
 
