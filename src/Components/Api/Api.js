@@ -20,6 +20,8 @@ const Api = () => {
                 name: data.name,
                 id: data.id,
                 image: data.sprites['front_default'],
+                weight: data.weight,
+                height: data.height,
                 type: data.types.map((type) => type.type.name),
                 stats: data.stats.map(function(stat){
                     return{

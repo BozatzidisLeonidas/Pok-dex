@@ -4,6 +4,7 @@ import SignIn from './Components/SignInPage/SignIn';
 import Register from './Components/RegisterPage/Register'
 import Api from './Components/Api/Api';
 import Card from './Components/Card/Card';
+import Info from './Components/Info/Info';
 import './App.css';
 
 
@@ -16,6 +17,7 @@ class App extends Component {
       <div className="App">
         <Navigation />
         <Api />
+        
         {/* <Register />
         <SignIn /> */}
 

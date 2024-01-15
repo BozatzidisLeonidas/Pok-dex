@@ -28,7 +28,6 @@
 
 
 #all:hover #caught {
-    background-image: url('../../Images/White.png');
     opacity: 1;
   }
   
