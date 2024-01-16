@@ -1,56 +1,70 @@
-import React, { useState, useEffect } from 'react';
+import React, { Component } from 'react';
 import Card from '../Card/Card';
 import './Api.css';
 
-const Api = () => {
-    const [pokemon, setPokemon] = useState([]);
+class Api extends Component {
+    constructor(props) {
+      super(props);
+      this.state = {
+        pokemon: [],
+      };
+    }
+  
+    componentDidMount() {
+      this.fetchData();
+    }
 
-    useEffect(() => {
-        const fetchData = async () => {
-            const promises = [];
+   
+    fetchData = async () => {
 
-            for (let i = 1; i <= 1; i++) {
-                const url = `https://pokeapi.co/api/v2/pokemon/${i}`;
-                promises.push(fetch(url).then((res) => res.json()));
-            }
+        const promises = [];
 
-            const results = await Promise.all(promises);
+        for (let i = 1; i <= 1; i++) {
+            const url = `https://pokeapi.co/api/v2/pokemon/${i}`;
+            promises.push(fetch(url).then((res) => res.json()));
+         }
 
-            const formattedPokemon = results.map((data) => ({
-                name: data.name,
-                id: data.id,
-                image: data.sprites['front_default'],
-                weight: data.weight,
-                height: data.height,
-                type: data.types.map((type) => type.type.name),
-                stats: data.stats.map(function(stat){
-                    return{
-                        name: stat.stat.name, //stats[0-6].stat.name
-                        base_stat: stat.base_stat,
-                    }
-                  }),
+        const results = await Promise.all(promises);
+
+        const formattedPokemon = results.map((data) => ({
+
+            name: data.name,
+            id: data.id,
+            image: data.sprites['front_default'],
+            weight: data.weight,
+            height: data.height,
+            type: data.types.map((type) => type.type.name),
+            stats: data.stats.map(function(stat){
+                return{
+                    name: stat.stat.name, //stats[0-6].stat.name
+                    base_stat: stat.base_stat,
+                };
+            }),
                 
+        }));
 
-            }));
-            console.log(pokemon)
-            setPokemon(formattedPokemon);
-        };
+        // console.log("hi")
 
-        fetchData();
-    }, []); // Empty dependency array ensures useEffect runs only once, similar to componentDidMount
+        this.setState({ pokemon: formattedPokemon });
+
+        // console.log(this.state.pokemon)
+    };
     
-    return (
-    <div className="window">
-        <div className="pokemon-list-container">
-            {pokemon.map((p, index) => (
-                <div key={index} className="pokemon-list-item">
-                     <Card pokemonList={p} />
-                </div>
-            ))}
-        </div>
+    render(){
 
-    </div>
-    );
+        return (
+            <div className="window">
+              <div className="pokemon-list-container">
+                {this.state.pokemon.map((p, index) => (
+                  <div key={index} className="pokemon-list-item">
+                    <Card pokemonList={p} onCardClick={this.props.onPokemonSelect} />
+                  </div>
+                ))}
+              </div>
+            </div>
+        );
+    }
+    
 }
 
 export default Api;
