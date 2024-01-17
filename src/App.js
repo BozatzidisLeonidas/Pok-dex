@@ -23,9 +23,10 @@ class App extends Component {
     return (
       <div className="App">
         <Navigation />
-        <Api onPokemonSelect={this.handlePokemonSelect} />
         {this.state.selectedPokemon && 
         <Info pokemon={this.state.selectedPokemon} />}
+        <Api onPokemonSelect={this.handlePokemonSelect} />
+        
         {/* <Register />
         <SignIn /> */}
 

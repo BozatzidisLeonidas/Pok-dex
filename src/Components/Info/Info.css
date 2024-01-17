@@ -1,5 +1,82 @@
 #allInfo{
     display: flex;
-    justify-content: start;
-    
+    justify-items: center;
+    align-items: center;
+    width: 30%;
+    display: grid;
+    margin-top: 10%;
+    margin-left: 10%;
+}
+
+#topBar{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    align-items: center;
+    background: linear-gradient(115deg, #fd5d17 35%, #191919 35%);
+    -webkit-text-fill-color: aliceblue;
+    border-radius: 4px;
+}
+
+#topBar > img{
+    width:60px;
+    height:60px;
+}
+
+#Id{
+    -webkit-text-fill-color:#191919;
+    margin-right: auto;
+    font-weight: bold;
+}
+
+#Name{
+    margin-right:19%;
+}
+
+#imageBig > img{
+    width:300px;
+    height:300px;
+}
+
+.type{
+    display: flex;
+}
+
+.typeFull{
+    width:100%;      
+}
+
+.typeText{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: lightgray;
+    width:50%;   
+}
+
+
+.typeVar{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(228, 231, 236);
+    width:50%;   
+}
+
+#statsTable {
+  width: 100%;
+  background-color: #191919;  
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  width: 50%;
+  border: 1px solid #dddddd;
+  text-align: center;
+  padding: 10px;
+  -webkit-text-fill-color: aliceblue;
 }
