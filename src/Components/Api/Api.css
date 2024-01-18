@@ -1,6 +1,6 @@
 .pokemon-list-container {  
     margin-top: 100px;
-    width: 42%;
+    width: 50%;
     height: 1190px; /* Set a fixed height for the container */
     overflow-y: auto;
     display: flex;
@@ -15,6 +15,8 @@
   .window{
     display: flex;
     justify-content: flex-end;
+    margin-left: 10%;
+    width:100%;
   }
 
   

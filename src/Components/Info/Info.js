@@ -33,32 +33,32 @@ const Info = ({ pokemon }) => {
         <div id='imageBig'>
           <img src={image} alt='image' />
         </div>
-        <div class='typeFull'>
-          <div class='type'>
-            <div class='typeText'>
+        <div className='typeFull'>
+          <div className='type'>
+            <div className='typeText'>
               <p>Type</p>
             </div>
-            <div class='typeVar'>
+            <div className='typeVar'>
               <p>{formattedType}</p>
             </div>
           </div>
         </div>
-        <div class='typeFull'>
-          <div class='type'>
-            <div class='typeText'>
+        <div className='typeFull'>
+          <div className='type'>
+            <div className='typeText'>
               <p>Height</p>
             </div>
-            <div class='typeVar'>
+            <div className='typeVar'>
               <p>{formattedHeight} m</p>
             </div>
           </div>
         </div>
-        <div class='typeFull'>
-          <div class='type'>
-            <div class='typeText'>
+        <div className='typeFull'>
+          <div className='type'>
+            <div className='typeText'>
               <p>Weight</p>
             </div>
-            <div class='typeVar'>
+            <div className='typeVar'>
               <p>{formattedWeight} Kg</p>
             </div>
           </div>

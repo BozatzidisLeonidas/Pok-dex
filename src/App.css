@@ -6,3 +6,7 @@ body{
 .center{
   flex: auto;
 }
+
+.App{
+  display: flex;
+}
