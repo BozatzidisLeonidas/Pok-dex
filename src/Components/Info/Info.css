@@ -4,7 +4,6 @@
     width: 50%;
     display: grid;
     margin-top: 10%;
-    margin-left: 10%;
     margin-bottom: 10%;
 }
 
@@ -38,6 +37,32 @@
     height:300px;
 }
 
+#CatchButton{
+  background-color: lightgray;
+  width: 100%;
+  font-size: 20px;
+}
+
+.textCenter {
+    justify-items: center;
+    align-items: center;
+    text-align: center; /* Add this line to center the text */
+  }
+
+#CatchButton:hover{
+    cursor: pointer;
+    background: linear-gradient(115deg, #fd5d17 50%, #191919 50%);
+    -webkit-text-fill-color: aliceblue;
+    text-decoration: underline;
+}
+
+.textCenter{
+     justify-items: center;
+     align-items: center;
+     text-align: center;
+}
+
+
 .type{
     display: flex;
 }
@@ -53,7 +78,6 @@
     background-color: lightgray;
     width:50%;   
 }
-
 
 .typeVar{
     display: flex;

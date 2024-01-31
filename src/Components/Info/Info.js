@@ -70,6 +70,11 @@ const Info = ({ pokemon }) => {
             </tbody>
           </table>
         </div>
+        <div className="black b pv2 bb bw3 b--mid-gray br2" id='CatchButton'>
+          <div className="textCenter">
+             <p>Catch!</p>
+          </div>
+        </div>
       </div>
     );
 };

@@ -1,0 +1,11 @@
+#allElements{
+    display: flex;
+    width: 1000px;
+    height:80px;
+    margin-top: 120px;
+    align-items: center;
+}
+
+#textTrainer{
+    margin-left: 20px;
+}

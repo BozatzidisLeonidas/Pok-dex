@@ -1,5 +1,6 @@
 import React, { Component , }  from 'react';
 import Navigation from './Components/Navigation/Navigation';
+import User from './Components/User/User';
 import SignIn from './Components/SignInPage/SignIn';
 import Register from './Components/RegisterPage/Register'
 import Api from './Components/Api/Api';
@@ -23,7 +24,7 @@ class App extends Component {
     return (
       <div className="App">
         <Navigation />
-
+        <User />
         {this.state.selectedPokemon && 
         <Info pokemon={this.state.selectedPokemon} />}
         
