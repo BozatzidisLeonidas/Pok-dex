@@ -1,10 +1,9 @@
 #allInfo{
     justify-items: center;
-    align-items: center;
     width: 50%;
-    display: grid;
-    margin-top: 10%;
-    margin-bottom: 10%;
+    margin-top: 5%;
+    margin-bottom: 15%;
+    margin-left:2%;
 }
 
 #topBar{
@@ -33,6 +32,8 @@
 }
 
 #imageBig > img{
+    margin-left: 25%;
+    display: flex;
     width:300px;
     height:300px;
 }
@@ -46,7 +47,7 @@
 .textCenter {
     justify-items: center;
     align-items: center;
-    text-align: center; /* Add this line to center the text */
+    text-align: center; 
   }
 
 #CatchButton:hover{

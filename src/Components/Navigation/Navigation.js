@@ -3,7 +3,7 @@ import './Navigation.css';
 import Seen from '../../Images/seen.png';
 import Caught from '../../Images/caught.png';
 
-const Navigation = () => {
+const Navigation = ({ onRouteChange, isSignedIn }) => {
     return(
     <div id='Navigation_title'>
         <div id='Navigation_titleLeft'>
@@ -20,6 +20,9 @@ const Navigation = () => {
             </div>
         </div>
         <p id='byNumber'>By Number</p>
+        <nav style={{display: 'flex', justifyContent: 'flex-end'}}>
+          <p onClick={() => onRouteChange('SignIn')} className='f3 link dim white underline pa3 pointer'>Sign Out</p>
+        </nav>
     </div>
  );
 }

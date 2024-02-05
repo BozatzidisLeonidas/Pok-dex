@@ -13,29 +13,44 @@ class App extends Component {
     super()
     this.state = {
     selectedPokemon: null,
+    route:'SignIn',
+    isSignedIn:false
     }
   }
 
   handlePokemonSelect = (pokemon) => {
     this.setState({ selectedPokemon: pokemon });
   };
+
+  onRouteChange = (route) => {
+    if(route === 'signout'){
+      this.setState({isSignedIn: false})
+    }else if(route === 'home'){
+      this.setState({isSignedIn: true})
+    }
+    this.setState({route: route})    
+  }
   
   render(){
     return (
       <div className="App">
-        <Navigation />
-        <User />
-        {this.state.selectedPokemon && 
-        <Info pokemon={this.state.selectedPokemon} />}
-        
-        <Api onPokemonSelect={this.handlePokemonSelect} />
-
-        
-        
-        {/* <Register /> */}
-        {/* <SignIn /> */}
-
+        { this.state.route === 'home'
+          ?<div >
+            <Navigation onRouteChange={this.onRouteChange}/>
+            <User />
+            <div className="PokemonListInfo">
+              {this.state.selectedPokemon && <Info pokemon={this.state.selectedPokemon} />}
+              <Api onPokemonSelect={this.handlePokemonSelect} />
+            </div>
+          </div>
+          :(
+            this.state.route==='SignIn'
+            ? <SignIn onRouteChange={this.onRouteChange}/>
+            : <Register onRouteChange={this.onRouteChange}/>
+          )
+        }  
       </div>
+      
     );
   } 
 }
