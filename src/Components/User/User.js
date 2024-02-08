@@ -2,21 +2,69 @@ import React, {useState, Component} from 'react';
 import "./User.css";
 import White from '../../Images/White.png';
 
-const User = () => {
-    return (
-        <div id='allElements' >
-            <div id='textTrainer' class="underline ">
-                <p>`Hello Placeholder, here are your Pokémon:</p>
+class User extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+          userName: '',
+          pokemonList: [],
+          sessionToken: ''
+        };
+    }
+
+  componentDidMount() {
+    const userName = localStorage.getItem('userName');
+    const pokemonListJSON = localStorage.getItem('pokemonList');
+    const sessionToken = localStorage.getItem('token');
+    let pokemonList = [];
+
+    if (pokemonListJSON) {
+        try {
+          pokemonList = JSON.parse(pokemonListJSON);
+        } catch (error) {
+          console.error('Error parsing pokemonList JSON:', error);
+        }
+    }
+
+    this.setState({ userName, pokemonList, sessionToken}, () =>{
+      this.sendTokenToBackend();
+    });
+  }
+
+  sendTokenToBackend() {
+    const { sessionToken, pokemonList } = this.state;
+
+    fetch('http://localhost:3000/catchPokemon', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ sessionToken , pokemonList })
+    })
+    .then(data => {
+        console.log("Token sent to backend successfully:", data);
+    })
+    .catch(error => {
+        console.error("Error sending token to backend:", error);
+    });
+}
+
+
+    render(){
+        const { userName, pokemonList, sessionToken } = this.state;
+        return (
+            <div id='frame' >
+              <div id='allElements'>
+                <div id='textTrainer'>
+                    <p>Hello {userName}, here are your Pokémon:</p>
+                </div>
+                <div className="white b pv2 ph3 bg-gray hover-bg-mid-gray bn br-pill" >
+                  {pokemonList.join(', ')}
+                </div>
+              </div>
             </div>
-            <div class="white b pv2 ph3 bg-gray hover-bg-mid-gray bn br-pill" >
-                <img src={White} alt='pokeball_icon_caught' style={{width: "25px"}}></img>
-                <img src={White} alt='pokeball_icon_caught' style={{width: "25px"}}></img>
-                <img src={White} alt='pokeball_icon_caught' style={{width: "25px"}}></img>
-                <img src={White} alt='pokeball_icon_caught' style={{width: "25px"}}></img>
-                <img src={White} alt='pokeball_icon_caught' style={{width: "25px"}}></img>
-            </div>
-        </div>
-    );
-  };
+        );
+    }
+};
 
 export default User;
