@@ -1,6 +1,5 @@
-import React, {useState, Component} from 'react';
+import React, { Component} from 'react';
 import "./User.css";
-import White from '../../Images/White.png';
 
 class User extends Component {
     constructor(props) {
@@ -34,7 +33,7 @@ class User extends Component {
   sendTokenToBackend() {
     const { sessionToken, pokemonList } = this.state;
 
-    fetch('http://localhost:3000/catchPokemon', {
+    fetch('http://localhost:3000/pushtoList', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -51,7 +50,7 @@ class User extends Component {
 
 
     render(){
-        const { userName, pokemonList, sessionToken } = this.state;
+        const { userName, pokemonList, } = this.state;
         return (
             <div id='frame' >
               <div id='allElements'>
