@@ -37,11 +37,11 @@ class App extends Component {
         { this.state.route === 'home'
           ?<div >
             <Navigation onRouteChange={this.onRouteChange}/>
-            <User />
             <div className="PokemonListInfo">
               {this.state.selectedPokemon && <Info pokemon={this.state.selectedPokemon} />}
               <Api onPokemonSelect={this.handlePokemonSelect} />
             </div>
+            <User />
           </div>
           :(
             this.state.route==='SignIn'

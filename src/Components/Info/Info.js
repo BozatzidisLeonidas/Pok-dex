@@ -48,7 +48,7 @@ class Info extends Component {
     return (
       <div id='allInfo' >
         <div id='topBar'>
-          <img src={image} alt='image' />
+          <img src={image} alt='topBar' />
           <div id='Id'>
               <p>Νο. {formattedId}</p>
           </div>
@@ -58,7 +58,7 @@ class Info extends Component {
           <img src={White} alt='pokeball' />
         </div>
         <div id='imageBig'>
-          <img src={image} alt='image' />
+          <img src={image} alt='bigImage' />
         </div>
         <div className='typeFull'>
           <div className='type'>

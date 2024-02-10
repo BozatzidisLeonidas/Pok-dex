@@ -5,13 +5,30 @@
     display: flex;
     flex-direction: column;
     gap: 4px;
+    margin-top: 95px;
+}
+
+.pokemon-list-container::-webkit-scrollbar {
+  width: 12px; /* Set the width of the scrollbar */
+  background-image: linear-gradient(180deg, #fd5d17 0%, #191919 99%);
+}
+
+.pokemon-list-container::-webkit-scrollbar-track {
+  background: transparent; /* Set the background color of the track */
+}
+
+.pokemon-list-container::-webkit-scrollbar-thumb {
+  background-color: #ff7e44; /* Set the color of the handle */
+  border-radius: 100px; /* Set border radius */
+  box-shadow: inset 2px 2px 5px 0 rgba(255, 255, 255, 0.5); /* Set box shadow */
 }
 
   .window{
     display: flex;
     justify-content: flex-end;
-    width:100vw;
-    margin-right: 100px;
+    width:90vw;
+    height:100vh;
+    margin-right: 30px;
   }
 
   
