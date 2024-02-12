@@ -2,8 +2,8 @@ import React, { Component , }  from 'react';
 import Navigation from './Components/Navigation/Navigation';
 import User from './Components/User/User';
 import SignIn from './Components/SignInPage/SignIn';
+import PokemonList from './Components/PokemonList/PokemonList';
 import Register from './Components/RegisterPage/Register'
-import Api from './Components/Api/Api';
 import Info from './Components/Info/Info';
 import './App.css';
 
@@ -13,46 +13,28 @@ class App extends Component {
     super()
     this.state = {
     selectedPokemon: null,
-    route:'SignIn',
-    isSignedIn:false
     }
   }
 
   handlePokemonSelect = (pokemon) => {
     this.setState({ selectedPokemon: pokemon });
   };
-
-  onRouteChange = (route) => {
-    if(route === 'signout'){
-      this.setState({isSignedIn: false})
-    }else if(route === 'home'){
-      this.setState({isSignedIn: true})
-    }
-    this.setState({route: route})    
-  }
-  
+ 
   render(){
+    const { selectedPokemon } = this.state;
     return (
       <div className="App">
-        { this.state.route === 'home'
-          ?<div >
-            <Navigation onRouteChange={this.onRouteChange}/>
-            <div className="PokemonListInfo">
-              {this.state.selectedPokemon && <Info pokemon={this.state.selectedPokemon} />}
-              <Api onPokemonSelect={this.handlePokemonSelect} />
-            </div>
-            <User />
-          </div>
-          :(
-            this.state.route==='SignIn'
-            ? <SignIn onRouteChange={this.onRouteChange}/>
-            : <Register onRouteChange={this.onRouteChange}/>
-          )
-        }  
+        <Navigation />
+        <div className="PokemonListInfo">
+          {selectedPokemon && <Info pokemon={selectedPokemon} />}
+        </div>
+        <div className='PokemonList'>
+          <PokemonList onPokemonSelect={this.handlePokemonSelect} />
+        </div>
+        <User />
       </div>
-      
     );
-  } 
+  }
 }
 
 export default App;

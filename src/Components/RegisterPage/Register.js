@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 
 
 class Register extends React.Component {
@@ -8,8 +9,7 @@ class Register extends React.Component {
       name: '',
       email: '',
       password: ''
-    }
-    this.onRouteChange = this.props.onRouteChange;
+    } 
   }
 
   onNameChange = (event) => {
@@ -38,7 +38,7 @@ class Register extends React.Component {
         // console.log({name:this.state.name,email:this.state.email, password:this.state.password})
         const res = await response.json()
         if (res.success) {
-        this.onRouteChange("SignIn")
+          window.location.href = "/";
         }
       })
   }
@@ -90,7 +90,11 @@ class Register extends React.Component {
                   value="Register"
                   onClick={onRegister}
                 />
-                <h4 onClick={() => onRouteChange('SignIn')} style={{textDecoration: 'underline',cursor: 'pointer'}} className="grow pointer"> Back to Sign In</h4>
+                <Link to="/" className="no-underline">
+                  <p className="f5 link dim near-black db pointer" >
+                    Back to Sign In
+                  </p>
+                </Link>
               </div>
             </div>
           </main>

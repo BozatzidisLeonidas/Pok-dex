@@ -1,9 +1,10 @@
 #allInfo{
     justify-items: center;
-    width: 50%;
-    margin-top: 5%;
-    margin-bottom: 15%;
+    margin-top: 96px;
     margin-left:2%;
+    width: 40%;
+    position: fixed;
+    left:10px;
 }
 
 #topBar{

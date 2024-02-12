@@ -25,28 +25,28 @@ class User extends Component {
         }
     }
 
-    // this.setState({ userName, pokemonList, sessionToken}, () =>{
-    //   this.sendTokenToBackend();
-    // });
+    this.setState({ userName, pokemonList, sessionToken}, () =>{
+      this.sendTokenToBackend();
+    });
   }
 
-//   sendTokenToBackend() {
-//     const { sessionToken, pokemonList } = this.state;
+  sendTokenToBackend() {
+    const { sessionToken, pokemonList } = this.state;
 
-//     fetch('http://localhost:3000/pushtoList', {
-//         method: 'POST',
-//         headers: {
-//             'Content-Type': 'application/json'
-//         },
-//         body: JSON.stringify({ sessionToken , pokemonList })
-//     })
-//     .then(data => {
-//         console.log("Token sent to backend successfully:", data);
-//     })
-//     .catch(error => {
-//         console.error("Error sending token to backend:", error);
-//     });
-// }
+    fetch('http://localhost:3000/pushtoList', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ sessionToken , pokemonList })
+    })
+    .then(data => {
+        console.log("Token sent to backend successfully:", data);
+    })
+    .catch(error => {
+        console.error("Error sending token to backend:", error);
+    });
+}
 
 
     render(){

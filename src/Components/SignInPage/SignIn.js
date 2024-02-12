@@ -1,4 +1,6 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
+
 
 class SignIn extends React.Component {
   constructor(props) {
@@ -33,7 +35,7 @@ class SignIn extends React.Component {
             localStorage.setItem('token', res.data.token);
             localStorage.setItem('userName', res.data.name);
             localStorage.setItem('pokemonList', JSON.stringify(res.data.list));
-            this.onRouteChange("home")
+            window.location.href = "/App";
         }
       })
   }
@@ -79,7 +81,11 @@ class SignIn extends React.Component {
               />
             </div>
             <div className="lh-copy mt3">
-              <p onClick={() => this.onRouteChange('Register')} className="f6 link dim black db pointer">Register</p>
+              <Link to="/Register" className="no-underline">
+                <p className="f5 link dim black db pointer">
+                  Register
+                </p>
+              </Link>
             </div>
           </div>
         </main>

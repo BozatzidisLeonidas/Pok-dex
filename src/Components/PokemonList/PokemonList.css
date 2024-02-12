@@ -1,0 +1,69 @@
+.pokemon-list-container {   
+    display: flex;
+    flex-direction: column;
+    height: 92vh;
+    overflow-y: auto;
+    gap: 4px;
+    margin-top: 95px;
+    width: 40%;
+}
+
+.pokemon-list-container::-webkit-scrollbar {
+  width: 12px; /* Set the width of the scrollbar */
+  background-image: linear-gradient(180deg, #fd5d17 0%, #191919 99%);
+}
+
+.pokemon-list-container::-webkit-scrollbar-track {
+  background: transparent; /* Set the background color of the track */
+}
+
+.pokemon-list-container::-webkit-scrollbar-thumb {
+  background-color: #ff7e44; /* Set the color of the handle */
+  border-radius: 100px; /* Set border radius */
+  box-shadow: inset 2px 2px 5px 0 rgba(255, 255, 255, 0.5); /* Set box shadow */
+}
+
+#all{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    border-radius: 50px;
+    position: relative;
+    font-weight: bold;
+    
+}
+
+#imageName{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content:flex-start;
+}
+
+#info{
+    display: flex;
+    align-items: center;
+    
+}
+
+#caught{
+    margin-right: 15px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+
+#all:hover #caught {
+    opacity: 1;
+  }
+  
+#name{
+    margin-left: 10%;
+}
+
+
+#all:hover{   
+    background: linear-gradient(115deg, #fd5d17 35%, #191919 35%);
+    -webkit-text-fill-color: aliceblue;
+}

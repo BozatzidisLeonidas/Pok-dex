@@ -1,9 +1,10 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 import './Navigation.css';
 import Seen from '../../Images/seen.png';
 import Caught from '../../Images/caught.png';
 
-const Navigation = ({ onRouteChange, isSignedIn }) => {
+const Navigation = () => {
     return(
     <div id='Navigation_title'>
         <div id='Navigation_titleLeft'>
@@ -21,7 +22,11 @@ const Navigation = ({ onRouteChange, isSignedIn }) => {
         </div>
         <p id='byNumber'>By Number</p>
         <nav style={{display: 'flex', justifyContent: 'flex-end'}}>
-          <p onClick={() => onRouteChange('SignIn')} className='f3 link dim white underline pa3 pointer'>Sign Out</p>
+            <Link to="/" className='no-underline'>
+                <p className='f3 link dim white underline pa3 pointer'>
+                    Sign Out
+                </p>
+            </Link>    
         </nav>
     </div>
  );
