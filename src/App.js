@@ -1,9 +1,7 @@
-import React, { Component , }  from 'react';
+import React, { Component , useState , useContext }  from 'react';
 import Navigation from './Components/Navigation/Navigation';
 import User from './Components/User/User';
-import SignIn from './Components/SignInPage/SignIn';
 import PokemonList from './Components/PokemonList/PokemonList';
-import Register from './Components/RegisterPage/Register'
 import Info from './Components/Info/Info';
 import './App.css';
 

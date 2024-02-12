@@ -31,6 +31,7 @@ class User extends Component {
   }
 
   sendTokenToBackend() {
+
     const { sessionToken, pokemonList } = this.state;
 
     fetch('http://localhost:3000/pushtoList', {
@@ -48,6 +49,10 @@ class User extends Component {
     });
 }
 
+  handlePokemonClick = (pokemon) => {
+    console.log('Clicked Pokemon:', pokemon);
+    // Perform any other actions here, such as sending to the backend
+  };
 
     render(){
         const { userName, pokemonList, } = this.state;
@@ -61,6 +66,7 @@ class User extends Component {
                   {pokemonList.join(', ')}
                 </div>
               </div>
+              
             </div>
         );
     }

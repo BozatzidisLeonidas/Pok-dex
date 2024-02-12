@@ -28,6 +28,7 @@ class Info extends Component {
   };
 
   render() {
+
     const { id, image, name, type, stats, height, weight } = this.props.pokemon;
     const formattedTypes=type.map(t => t.charAt(0).toUpperCase() + t.slice(1)).join(', ');
 
