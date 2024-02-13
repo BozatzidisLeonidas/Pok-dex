@@ -1,4 +1,4 @@
-import React, { Component , useState , useContext }  from 'react';
+import React, { Component }  from 'react';
 import Navigation from './Components/Navigation/Navigation';
 import User from './Components/User/User';
 import PokemonList from './Components/PokemonList/PokemonList';

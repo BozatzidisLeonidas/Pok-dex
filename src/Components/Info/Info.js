@@ -10,7 +10,7 @@ class Info extends Component {
     };
   }
 
-  onSubmitSignIn = (pokemonName) => {
+  onCatch = (pokemonName) => {
     fetch('http://localhost:3000/catchPokemon', {
       method: 'post',
       headers: { 'Content-Type': 'application/json' },
@@ -93,7 +93,7 @@ class Info extends Component {
           className="black b pv2 bb bw3 b--mid-gray br2"
           id="CatchButton"
           onClick={() => {
-            this.onSubmitSignIn(name);
+            this.onCatch(name);
           }}
         >
           <div className="textCenter">
