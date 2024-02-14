@@ -3,16 +3,16 @@ import { createSlice } from '@reduxjs/toolkit'
 export const pokemonSlice = createSlice({
     name: 'pokemonToCatch',
     initialState: {
-      pokemonToCatch: 0,
+      pokemonToCatch: "",
     },
     reducers: {
-        catchState: (state) => {
-          state.pokemonToCatch += 1
+        setPokemonToCatch: (state, name) => {
+          state.pokemonToCatch = name
         },
       },
     })
     
     // Action creators are generated for each case reducer function
-    export const { catchState } = pokemonSlice.actions
+    export const { setPokemonToCatch } = pokemonSlice.actions
     
     export default pokemonSlice.reducer

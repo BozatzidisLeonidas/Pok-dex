@@ -47,7 +47,7 @@ class User extends Component {
     .catch(error => {
         console.error("Error sending token to backend:", error);
     });
-}
+  }
 
   handlePokemonClick = (pokemon) => {
     console.log('Clicked Pokemon:', pokemon);

@@ -4,7 +4,7 @@
     height:80px;
     margin-top: 120px;
     align-items: center;
-    position:fixed;
+    /* position:fixed; */
     left:30px;
     top:1000px;
 }

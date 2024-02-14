@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import {toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import './Info.css';
 import White from '../../Images/White.png';
 
@@ -6,20 +8,34 @@ class Info extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      pokemonName: '',
     };
   }
 
+  toastOptions = {
+    position: "top-right",
+    autoClose: 3000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    theme: "light"
+    }
+
   onCatch = (pokemonName) => {
+    const sessionToken = localStorage.getItem('token');
+    
     fetch('http://localhost:3000/catchPokemon', {
       method: 'post',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ pokemonName }),
+      body: JSON.stringify({ pokemonName,sessionToken }),
     })
       .then(async (response) => {
         const res = await response.json();
         if (res.success) {
+          toast.success(res.message, this.toastOptions)
           console.log(pokemonName);
+        } else {
+          toast.error(res.message, this.toastOptions)
         }
       })
       .catch((error) => {
