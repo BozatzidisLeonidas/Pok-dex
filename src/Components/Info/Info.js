@@ -7,9 +7,11 @@ import White from '../../Images/White.png';
 class Info extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-    };
+    this.toggleModal=this.props.toggleModal;
+    this.updatePokemonList=this.props.updatePokemonList;
   }
+
+  // toggleModal=this.props.toggleModal //this also works instead of constructor
 
   toastOptions = {
     position: "top-right",
@@ -23,7 +25,6 @@ class Info extends Component {
 
   onCatch = (pokemonName) => {
     const sessionToken = localStorage.getItem('token');
-    
     fetch('http://localhost:3000/catchPokemon', {
       method: 'post',
       headers: { 'Content-Type': 'application/json' },
@@ -33,9 +34,13 @@ class Info extends Component {
         const res = await response.json();
         if (res.success) {
           toast.success(res.message, this.toastOptions)
-          console.log(pokemonName);
+          
+          console.log(pokemonName); 
         } else {
           toast.error(res.message, this.toastOptions)
+          this.updatePokemonList(res.pokemonList)
+          this.toggleModal()
+          
         }
       })
       .catch((error) => {
@@ -44,7 +49,7 @@ class Info extends Component {
   };
 
   render() {
-
+  
     const { id, image, name, type, stats, height, weight } = this.props.pokemon;
     const formattedTypes=type.map(t => t.charAt(0).toUpperCase() + t.slice(1)).join(', ');
 
@@ -105,13 +110,8 @@ class Info extends Component {
             </tbody>
           </table>
         </div>
-        <div
-          className="black b pv2 bb bw3 b--mid-gray br2"
-          id="CatchButton"
-          onClick={() => {
-            this.onCatch(name);
-          }}
-        >
+        <div className="black b pv2 bb bw3 b--mid-gray br2" id="CatchButton" onClick={() => { this.onCatch(name);}}
+>
           <div className="textCenter">
             <p>Catch!</p>
           </div>

@@ -14,26 +14,36 @@ class App extends Component {
     super()
     this.state = {
     selectedPokemon: null,
+    modal:false,
+    pokemonList:[]
     }
+  }
+
+  toggleModal = () =>{
+    this.setState({modal:!this.state.modal})
   }
 
   handlePokemonSelect = (pokemon) => {
     this.setState({ selectedPokemon: pokemon });
   };
+
+  updatePokemonList = (list) =>{
+    this.setState({pokemonList: list})
+  }
  
   render(){
-    const { selectedPokemon } = this.state;
+    const { selectedPokemon, modal, pokemonList} = this.state;
     return (
       <div className="App">
         <Navigation />
-        {/* <User /> */}
+        <User />
         <div className="PokemonListInfo">
-          {selectedPokemon && <Info pokemon={selectedPokemon} />}
+          {selectedPokemon && <Info pokemon={selectedPokemon} toggleModal={this.toggleModal} updatePokemonList={this.updatePokemonList} />}
         </div>
         <div className='PokemonList'>
           <PokemonList onPokemonSelect={this.handlePokemonSelect} />
         </div>
-        <Modal/>
+        { modal && <Modal toggleModal={this.toggleModal} pokemonList={pokemonList} selectedPokemon={selectedPokemon}/>}
         <ToastContainer />
       </div>
     );

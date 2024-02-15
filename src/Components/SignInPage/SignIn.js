@@ -9,7 +9,6 @@ class SignIn extends React.Component {
       signInEmail: '',
       signInPassword: ''
     }
-    this.onRouteChange = this.props.onRouteChange;
   }
 
   onEmailChange = (event) => {

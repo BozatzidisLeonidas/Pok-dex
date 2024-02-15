@@ -34,7 +34,7 @@ class User extends Component {
 
     const { sessionToken, pokemonList } = this.state;
 
-    fetch('http://localhost:3000/pushtoList', {
+    fetch('http://localhost:3000/usersPokemon', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
