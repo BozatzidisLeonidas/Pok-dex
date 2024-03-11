@@ -5,6 +5,27 @@ import Seen from '../../Images/seen.png';
 import Caught from '../../Images/caught.png';
 
 const Navigation = () => {
+    const handleSignOut = async () => {
+        try{
+            const response = await
+            fetch('http://localhost:3000/signout', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ sessionToken: localStorage.getItem('token') })
+            })
+            const data = await response.json();    
+            if (data.success) {
+                localStorage.removeItem('token');
+              } else {
+                console.error('Signout error:', data.message);
+              }
+        }catch(error){
+            console.error('Error signing out:', error);
+        }
+    }
+
     return(
     <div id='Navigation_title'>
         <div id='Navigation_titleLeft'>
@@ -23,7 +44,7 @@ const Navigation = () => {
         <p id='byNumber'>By Number</p>
         <nav style={{display: 'flex', justifyContent: 'flex-end'}}>
             <Link to="/" className='no-underline'>
-                <p className='f3 link dim white underline pa3 pointer'>
+                <p className='f3 link dim white underline pa3 pointer' onClick={handleSignOut}>
                     Sign Out
                 </p>
             </Link>    

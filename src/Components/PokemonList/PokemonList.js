@@ -19,8 +19,7 @@ const PokemonList = ({ onPokemonSelect }) => {
         console.error('Error fetching Pokemon list:', error);
       }
     };
-
-    fetchPokemonList();
+  fetchPokemonList();
   }, []);
 
   const handleCardClick = (pokemon) => {
