@@ -6,7 +6,9 @@ const Modal = (props) => {
 
     const userName = localStorage.getItem('userName');
     const pokemonListJSON = props.pokemonList;
-    const selectedPokemon=props.selectedPokemon.name;
+    const selectedPokemon = props.selectedPokemon.name;
+
+    const updatePokemonList = props.updatePokemonList;
     
     const replace = ( pokemon ) => {
         const sessionToken = localStorage.getItem('token');
@@ -18,7 +20,8 @@ const Modal = (props) => {
           .then(async (response) => {
             const res = await response.json()
             if (res.success) {
-              localStorage.setItem('pokemonList', JSON.stringify(res.data.list));  
+              localStorage.setItem('pokemonList', JSON.stringify(res.data));
+              updatePokemonList(res.data);
             }
         })
         .catch((error) => {

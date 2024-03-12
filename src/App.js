@@ -14,7 +14,9 @@ class App extends Component {
     this.state = {
       selectedPokemon: null,
       modal: false,
-      pokemonList: []
+      pokemonList: [],
+      userName: null,
+      sessionToken: null
     };
   }
 
@@ -30,12 +32,36 @@ class App extends Component {
     this.setState({ pokemonList: list });
   };
 
+  fetchUserData() {
+    const sessionToken = localStorage.getItem('token');
+    fetch('http://localhost:3000/userData', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ sessionToken })
+    })
+    .then(response => response.json())
+    .then(data => {
+        const { userName, pokemonList } = data;
+        this.setState({ userName, pokemonList, sessionToken });
+        // this.props.updatePokemonList(pokemonList);
+    })
+    .catch(error => {
+        console.error('Error fetching user data:', error);
+    });
+  }
+
+  componentDidMount() {
+    this.fetchUserData();
+  }
+
   render() {
-    const { selectedPokemon, modal, pokemonList } = this.state;
+    const { selectedPokemon, modal, pokemonList, userName} = this.state;
     return (
       <div className="App">
         <Navigation />
-        <User updatePokemonList={this.updatePokemonList} />
+        <User pokemonList = {this.state.pokemonList} userName = {userName}/>
         <div className="PokemonListInfo">
           {selectedPokemon && (
             <Info
@@ -48,7 +74,7 @@ class App extends Component {
         <div className="PokemonList">
           <PokemonList onPokemonSelect={this.handlePokemonSelect} />
         </div>
-        {modal && <Modal toggleModal={this.toggleModal} pokemonList={pokemonList} selectedPokemon={selectedPokemon} />}
+        {modal && <Modal toggleModal={this.toggleModal} pokemonList={pokemonList} selectedPokemon={selectedPokemon} updatePokemonList={this.updatePokemonList}/>}
         <ToastContainer />
       </div>
     );
