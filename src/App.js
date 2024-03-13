@@ -6,6 +6,7 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import PokemonList from './Components/PokemonList/PokemonList';
 import Info from './Components/Info/Info';
+import { fetchUserData } from './Services/services';
 import './App.css';
 
 class App extends Component {
@@ -32,24 +33,19 @@ class App extends Component {
     this.setState({ pokemonList: list });
   };
 
-  fetchUserData() {
-    const sessionToken = localStorage.getItem('token');
-    fetch('http://localhost:3000/userData', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ sessionToken })
-    })
-    .then(response => response.json())
-    .then(data => {
-        const { userName, pokemonList } = data;
-        this.setState({ userName, pokemonList, sessionToken });
-        // this.props.updatePokemonList(pokemonList);
-    })
-    .catch(error => {
-        console.error('Error fetching user data:', error);
-    });
+  fetchUserData= async () => {
+      try{
+        const data = await fetchUserData();
+        if (data.userName && data.pokemonList) {
+          const { userName, pokemonList } = data;
+          this.setState({ userName, pokemonList });
+        } else {
+          console.error('Invalid user data received:', data);
+        }  
+      }catch(error){
+        console.log('Fetching user Data failed:',error);
+      }
+
   }
 
   componentDidMount() {

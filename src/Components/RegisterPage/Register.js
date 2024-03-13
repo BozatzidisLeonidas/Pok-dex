@@ -1,6 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
-
+import {register} from '../../Services/services';
 
 class Register extends React.Component {
   constructor(props) {
@@ -24,23 +24,16 @@ class Register extends React.Component {
     this.setState({password: event.target.value})
   }
 
-  onRegister = () => {
-    fetch('http://localhost:3000/register', {
-      method: 'post',
-      headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify({
-        name: this.state.name,
-        email: this.state.email,
-        password: this.state.password
-      })
-    })
-      .then(async (response) => {
-        // console.log({name:this.state.name,email:this.state.email, password:this.state.password})
-        const res = await response.json()
-        if (res.success) {
-          window.location.href = "/";
-        }
-      })
+  onRegister = async () => {
+    const { name, email, password } = this.state;
+    try {
+      const response = await register(name, email, password);
+      if (response.success) {
+        window.location.href = "/";
+      }
+    } catch (error) {
+      console.error('Error during registration:', error);
+    }
   }
 
   render() {

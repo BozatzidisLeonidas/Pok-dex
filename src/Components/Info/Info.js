@@ -3,6 +3,7 @@ import {toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import './Info.css';
 import White from '../../Images/White.png';
+import {catchPokemon} from '../../Services/services'
 
 class Info extends Component {
   constructor(props) {
@@ -12,6 +13,8 @@ class Info extends Component {
   }
 
   // toggleModal=this.props.toggleModal //this also works instead of constructor
+
+  //epishs this.props.toggleModal === props.toggleModal
 
   toastOptions = {
     position: "top-right",
@@ -23,30 +26,22 @@ class Info extends Component {
     theme: "light"
     }
 
-  onCatch = (pokemonName) => {
+  onCatch = async (pokemonName) => {
     const sessionToken = localStorage.getItem('token');
-    fetch('http://localhost:3000/catchPokemon', {
-      method: 'post',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ pokemonName,sessionToken }),
-    })
-      .then(async (response) => {
-        const res = await response.json();
-        if (res.success) {
-          toast.success(res.message, this.toastOptions)
-          
+    try{
+      const data = await catchPokemon(pokemonName,sessionToken);
+      if(data.success){
+        toast.success(data.message, this.toastOptions);
           console.log(pokemonName); 
-        } else {
-          toast.error(res.message, this.toastOptions)
-          this.updatePokemonList(res.pokemonList)
-          this.toggleModal()
-          
-        }
-      })
-      .catch((error) => {
-        console.error('Error:', error);
-      });
-  };
+      }else {
+        toast.error(data.message, this.toastOptions);
+        this.updatePokemonList(data.pokemonList);
+        this.toggleModal();
+      }
+    }catch(error){
+      console.error('Error at Info.js onCatch function:', error);
+    }
+  }
 
   render() {
   

@@ -1,15 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import "./PokemonList.css";
 import White from '../../Images/White.png';
+import {fetchPokemonList} from '../../Services/services'
 
 const PokemonList = ({ onPokemonSelect }) => {
   const [pokemonList, setPokemonList] = useState([]);
 
   useEffect(() => {
-    const fetchPokemonList = async () => {
+    const getPokemonList  = async () => {
       try {
-        const response = await fetch('http://localhost:3000/pokemonList');
-        const { success, pokemon } = await response.json();
+        const data = await fetchPokemonList();
+        const { success, pokemon } = data
         if (success) {
           setPokemonList(pokemon);
         } else {
@@ -19,7 +20,7 @@ const PokemonList = ({ onPokemonSelect }) => {
         console.error('Error fetching Pokemon list:', error);
       }
     };
-  fetchPokemonList();
+    getPokemonList();
   }, []);
 
   const handleCardClick = (pokemon) => {
