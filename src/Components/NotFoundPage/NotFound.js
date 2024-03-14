@@ -3,6 +3,11 @@ import {Link} from 'react-router-dom';
 import './NotFound.css';
 import notFound from '../../Images/404.png';
 
+//The NotFound component represents a page displayed when the requested page is not found (404).
+//It contains a sorry message, a 404 image, a message indicating that the page is not found, and a button to go back to the home page.
+//The Link component from react-router-dom is used to create a link to the home page.
+//The notFound image is displayed using the img tag with the src attribute pointing to the image file.
+
 const NotFound = () => {
     return (
       <div id='page'>
