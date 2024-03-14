@@ -1,26 +1,26 @@
-Pokemon Catching App - Frontend
+# Pokemon Catching App - Frontend
+
 Welcome to the frontend repository of the Pokemon Catching App! This application allows users to catch and manage their Pokemon collection. Users can view information about different Pokemon, catch them, and replace existing Pokemon in their collection if their storage is full.
 
-Getting Started
-To run this project locally, follow these steps:
+## Run Locally
 
 Clone the Repository:
 
-git clone <frontend-repo-url>
+```bash
+git clone https://github.com/BozatzidisLeonidas/Pokedex.git
+```
 Install Dependencies:
 
+```bash
 cd pokemon-catching-frontend
 npm install
+```
 
-Start the Development Server:
-
-sql
-Copy code
-npm start
 Set Up Backend:
 
 Clone the backend repository from here.
 Follow the instructions in the backend README to set up and start the backend server.
+
 Access the Application:
 Once both the frontend and backend servers are running, you can access the application at http://localhost:3000.
 
@@ -40,4 +40,3 @@ Contributors
 Your Name - Role (e.g., Frontend Developer, Full Stack Developer)
 License
 This project is licensed under the MIT License.
-

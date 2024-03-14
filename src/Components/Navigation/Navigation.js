@@ -7,6 +7,7 @@ import { signout } from '../../Services/services';
 
 const Navigation = () => {
   
+  // Function to handle sign out
   const handleSignOut = async () => {
     try {
       const data = await signout();
@@ -20,6 +21,7 @@ const Navigation = () => {
 
   return (
     <div id='Navigation_title'>
+      {/* Title and icons for caught and seen */}
       <div id='Navigation_titleLeft'>
         <p>Pokédex</p>
         <div id='Navigation_caught-seen' >
@@ -33,6 +35,7 @@ const Navigation = () => {
           </div>
         </div>
       </div>
+      {/* Navigation link for signing out */}
       <p id='byNumber'>By Number</p>
       <nav style={{ display: 'flex', justifyContent: 'flex-end' }}>
         <Link to="/" className='no-underline'>

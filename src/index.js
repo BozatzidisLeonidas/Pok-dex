@@ -1,8 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import {createBrowserRouter, RouterProvider} from 'react-router-dom';
-import store from './State/Store'
-import { Provider } from 'react-redux'
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import './index.css';
 import './Components/Navigation/Navigation';
 import App from './App';
@@ -11,32 +9,31 @@ import Register from './Components/RegisterPage/Register';
 import NotFound from './Components/NotFoundPage/NotFound';
 import 'tachyons';
 
-
+// Create browser router configuration
 const router = createBrowserRouter([
     {
-        path:'/',
-        element:<SignIn/>,
-        errorElement:<NotFound/>
+        path: '/',
+        element: <SignIn />,
+        errorElement: <NotFound />
     },
     {
-        path:'/Register',
-        element:<Register/>
+        path: '/Register',
+        element: <Register />
     },
     {
-        path:'/App',
-        element:<App/>
+        path: '/App',
+        element: <App />
     }
 ]);
 
-
+// Create a root for ReactDOM rendering
 const root = ReactDOM.createRoot(document.getElementById('root'));
+
+// Render only the RouterProvider with router
 root.render(
-    <Provider store={store}>
-        <RouterProvider router={router}/>
-    </Provider>
+    <RouterProvider router={router}/>
 );
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-

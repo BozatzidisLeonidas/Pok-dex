@@ -1,21 +1,23 @@
 import React, { Component } from 'react';
-import {toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import './Info.css';
 import White from '../../Images/White.png';
-import {catchPokemon} from '../../Services/services'
+import { catchPokemon } from '../../Services/services';
 
 class Info extends Component {
   constructor(props) {
     super(props);
-    this.toggleModal=this.props.toggleModal;
-    this.updatePokemonList=this.props.updatePokemonList;
+    // Bind toggleModal and updatePokemonList functions
+    this.toggleModal = this.props.toggleModal;
+    this.updatePokemonList = this.props.updatePokemonList;
   }
 
   // toggleModal=this.props.toggleModal //this also works instead of constructor
 
   //epishs this.props.toggleModal === props.toggleModal
 
+  // Toast options
   toastOptions = {
     position: "top-right",
     autoClose: 3000,
@@ -24,32 +26,36 @@ class Info extends Component {
     pauseOnHover: true,
     draggable: true,
     theme: "light"
-    }
+  }
 
+  // Catch Pokemon function
   onCatch = async (pokemonName) => {
     const sessionToken = localStorage.getItem('token');
-    try{
-      const data = await catchPokemon(pokemonName,sessionToken);
-      if(data.success){
+    try {
+      // Call catchPokemon service
+      const data = await catchPokemon(pokemonName, sessionToken);
+      if (data.success) {
+        // Display success toast
         toast.success(data.message, this.toastOptions);
-          console.log(pokemonName); 
-      }else {
+        console.log(pokemonName);
+      } else {
+        // Display error toast and update pokemon list
         toast.error(data.message, this.toastOptions);
         this.updatePokemonList(data.pokemonList);
         this.toggleModal();
       }
-    }catch(error){
+    } catch (error) {
       console.error('Error at Info.js onCatch function:', error);
     }
   }
 
   render() {
-  
     const { id, image, name, type, stats, height, weight } = this.props.pokemon;
-    const formattedTypes=type.map(t => t.charAt(0).toUpperCase() + t.slice(1)).join(', ');
+    const formattedTypes = type.map(t => t.charAt(0).toUpperCase() + t.slice(1)).join(', ');
 
     return (
       <div id="allInfo">
+        {/* Pokemon information */}
         <div id="topBar">
           <img src={image} alt="topBar" />
           <div id="Id">
@@ -105,8 +111,8 @@ class Info extends Component {
             </tbody>
           </table>
         </div>
-        <div className="black b pv2 bb bw3 b--mid-gray br2" id="CatchButton" onClick={() => { this.onCatch(name);}}
->
+        {/* Catch button */}
+        <div className="black b pv2 bb bw3 b--mid-gray br2" id="CatchButton" onClick={() => { this.onCatch(name); }}>
           <div className="textCenter">
             <p>Catch!</p>
           </div>

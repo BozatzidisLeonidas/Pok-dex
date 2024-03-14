@@ -11,19 +11,23 @@ class SignIn extends React.Component {
     }
   }
 
+  // Update email state when input changes
   onEmailChange = (event) => {
     this.setState({ email: event.target.value })
   }
 
+  // Update password state when input changes
   onPasswordChange = (event) => {
     this.setState({ password: event.target.value })
   }
 
+  // Handle sign in submission
   onSubmitSignIn = async () => {
     const { email, password } = this.state;
     try {
       const response = await signin(email, password);
       if (response.success) {
+        // Store user data in local storage and redirect to App
         localStorage.setItem('token', response.data.token);
         localStorage.setItem('userName', response.data.name);
         localStorage.setItem('pokemonList', JSON.stringify(response.data.list));

@@ -12,23 +12,29 @@ class Register extends React.Component {
     } 
   }
 
+  // Update name state when input changes
   onNameChange = (event) => {
     this.setState({name: event.target.value})
   }
 
+  // Update email state when input changes
   onEmailChange = (event) => {
     this.setState({email: event.target.value})
   }
 
+  // Update password state when input changes
   onPasswordChange = (event) => {
     this.setState({password: event.target.value})
   }
 
+  // Handle registration
   onRegister = async () => {
     const { name, email, password } = this.state;
     try {
+      // Call register service
       const response = await register(name, email, password);
       if (response.success) {
+        // Redirect to home page after successful registration
         window.location.href = "/";
       }
     } catch (error) {
